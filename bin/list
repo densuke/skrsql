@@ -1,0 +1,68 @@
+#!/bin/bash
+
+DATA=/usr/local/share/ssql/code-ssql
+DB=Can
+
+usage() {
+  cat <<EOM >/dev/stderr
+使い方: $(basename $0) 番号1 番号2 [番号3]
+List 1-1 の場合: $(basename) 1 1
+EOM
+}
+
+if [ "x$1" = "x" ]; then
+  usage
+fi
+
+
+f='%02d_%02d'
+case $(basename $0) in
+list)
+  fmt="List"
+  ;;
+can)
+  fmt="Can"
+  ;;
+q)
+  fmt="Q"
+  ;;
+qa)
+  fmt="QA"
+  f="_%03d"
+  ;;
+qb)
+  fmt="QB"
+  f="_%03d"
+  ;;
+qc)
+  fmt="QC"
+  f="_%03d"
+  ;;
+
+*)
+  echo "未定義の形式です" >/dev/stderr
+  exit 1
+  ;;
+esac
+
+id=$(printf "${f}" $1 $2)
+
+[ ! "_$3" = '_' ] &&  id="${id}_$3"
+[ ! "_$4" = '_' ] &&  id="${id}_$4"
+
+DDL="${DATA}/ddl/ssql-${fmt}${id}"
+
+if [ ! -f "${DDL}" ]; then
+  echo "問題データがありません: ファイル名 $(basename ${DDL})" >/dev/stderr
+  exit 1
+fi
+
+echo "問題ファイル: $(basename ${DDL})"
+
+dropdb --if-exists ${DB}
+createdb ${DB}
+psql "${DB}" < "${DDL}" >/dev/null
+trap "echo 後処理中です; dropdb ${DB}" 0
+echo "--- psqlを起動しています: \q と入れれば終了です ---"
+echo "なお、Mac版psqlインタプリタでは日本語の文字化け対策で行編集を無効にしています、カーソルキーは使えません"
+psql -n "${DB}"
