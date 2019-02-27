@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DATA=/usr/local/share/ssql/code-ssql
+DATA=/usr/local/share/ssql2/code-ssql2
 DB=Can
 
 usage() {
@@ -50,7 +50,7 @@ id=$(printf "${f}" $1 $2)
 [ ! "_$3" = '_' ] &&  id="${id}_$3"
 [ ! "_$4" = '_' ] &&  id="${id}_$4"
 
-DDL="${DATA}/ddl/ssql-${fmt}${id}"
+DDL="${DATA}/ddl/ssql2-${fmt}${id}"
 
 if [ ! -f "${DDL}" ]; then
   echo "問題データがありません: ファイル名 $(basename ${DDL})" >/dev/stderr

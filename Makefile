@@ -1,4 +1,4 @@
-URL=https://flairlink.jp/download/code-ssql.zip
+URL=https://sukkiri.jp/wp-content/uploads/2019/01/code-ssql2.zip
 FILE=$(shell basename $(URL))
 DEST=/usr/local/share/ssql
 BIN=/usr/local/bin
@@ -18,7 +18,7 @@ check:
 download: $(FILE)
 
 $(FILE):
-	if [ ! -f $(shell basename $(URL)) ]; then curl $(URL) > $(shell basename $(URL)); fi
+	if [ ! -f $(shell basename $(URL)) ]; then curl -sL $(URL) > $(shell basename $(URL)); fi
 
 clean:
 	rm $(FILE)
