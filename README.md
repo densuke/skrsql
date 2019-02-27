@@ -68,7 +68,7 @@ PostgreSQLに関しては、利用者が以下の条件を満たしているこ�
 
 # ライセンス、再配布規定について
 
-このコードについてはGPL3といたします。ただしインストール時にダウンロードしている`code-ssql.zip`については、以下の点にご注意ください。
+このコードについてはGPL3といたします。ただしインストール時にダウンロードしている`code-ssql2.zip`については、以下の点にご注意ください。
 
 - ファイルの内容自体はCreative Commons BY-SA 4.0に準拠しています(そう記載されています)
-- ただしファイルの利用は書籍「[スッキリわかるSQL入門](https://hb.afl.rakuten.co.jp/hgc/02164ccd.7dcbe6c6.03dc0c55.8ee179dc/?pc=http%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F12270619%2F%3Fscid%3Daf_ich_link_urltxt%26m%3Dhttp%3A%2F%2Fm.rakuten.co.jp%2Fev%2Fbook%2F)」を持っている方のみとされています。
+- ただしファイルの利用は書籍「[スッキリわかるSQL入門第2版](https://hb.afl.rakuten.co.jp/hgc/02164ccd.7dcbe6c6.03dc0c55.8ee179dc/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F15702412%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F19388880%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjF9)」を持っている方のみとされています。
