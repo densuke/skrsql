@@ -29,8 +29,8 @@ install: download
 	install -d $(DEST)
 	unzip -o -q $(FILE) -d $(DEST)
 	install -m 0755 bin/list $(BIN)/
-	cd $(BIN) && for i in can q qa qb qc; do ln -svf list $$i; done
+	cd $(BIN) && for i in can q drill; do ln -svf list $$i; done
 
 uninstall:
 	rm -fr $(DEST)
-	cd $(BIN) && for i in can q qa qb qc; do rm -f $$i; done; rm -f list
+	cd $(BIN) && for i in can q drill; do rm -f $$i; done; rm -f list

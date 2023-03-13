@@ -6,7 +6,7 @@ DB=Can
 usage() {
   cat <<EOM >/dev/stderr
 使い方: $(basename $0) 番号1 番号2 [番号3]
-List 1-1 の場合: $(basename) 1 1
+リスト 1-1 の場合: $(basename) 1 1
 EOM
 }
 
@@ -14,52 +14,52 @@ if [ "x$1" = "x" ]; then
   usage
 fi
 
+# チャプター番号
+chap=$(printf "chap%02d" $1)
 
-f='%02d_%02d'
+f='%02d%02d'
 case $(basename $0) in
 list)
-  fmt="List"
+  fmt="pre_list"
+  id=$(printf "${f}" $1 $2)
   ;;
 can)
-  fmt="Can"
+  fmt="pre_summary"
+  f="%02d"
+  id=$(printf "${f}" $1)
   ;;
 q)
-  fmt="Q"
+  fmt="pre_quizans"
+  id=$(printf "${f}" $1 $2)
   ;;
-qa)
-  fmt="QA"
-  f="_%03d"
+drill)
+  fmt="pre_quizapx"
+  f="%d"
+  id=$(printf "${f}" $1)
+  chap="chapac"
   ;;
-qb)
-  fmt="QB"
-  f="_%03d"
-  ;;
-qc)
-  fmt="QC"
-  f="_%03d"
-  ;;
-
 *)
   echo "未定義の形式です" >/dev/stderr
   exit 1
   ;;
 esac
 
-id=$(printf "${f}" $1 $2)
+#id=$(printf "${f}" $1 $2)
 
 [ ! "_$3" = '_' ] &&  id="${id}_$3"
 [ ! "_$4" = '_' ] &&  id="${id}_$4"
 
-DDL="${DATA}/ddl/ssql2-${fmt}${id}"
+DDL="${DATA}/setup/${chap}/${fmt}${id}.sql"
 
 if [ ! -f "${DDL}" ]; then
-  echo "問題データがありません: ファイル名 $(basename ${DDL})" >/dev/stderr
+  echo "問題データがありません(ファイル名 $(basename ${DDL}))" >/dev/stderr
   exit 1
 fi
 
 echo "問題ファイル: $(basename ${DDL})"
 
-dropdb --if-exists ${DB}
+dropdb --if-exists ${DB} >/dev/null
+
 createdb ${DB}
 psql "${DB}" < "${DDL}" >/dev/null
 trap "echo 後処理中です; dropdb ${DB}" 0
