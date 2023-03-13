@@ -9,9 +9,7 @@ dokoQL([http://dokoql.com/](http://dokoql.com/))が使えればGUIでそれな�
 
 - 書籍 [スッキリわかるSQL入門第3版](https://af.moshimo.com/af/c/click?a_id=1175594&p_id=56&pc_id=56&pl_id=637&s_v=b5Rz2P0601xu&url=http%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17018590%2F) ※必須条件、お持ちでない方は使えません
 
-- macOS(作成時はSierra 10.12.4を使用)
-    - PostgreSQL 9.6系(enterpriseDBからインストールしたものを使ってます)
-- Ubuntu Linux 18.04LTS(サーバー版)
+- Ubuntu Linux22.04LTS(サーバー版)
      - postgresql-10パッケージによるサーバー
 
 ----
