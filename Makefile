@@ -1,4 +1,5 @@
-URL=https://sukkiri.jp/wp-content/uploads/2019/01/code-ssql2.zip
+# v3.7.0
+URL=https://github.com/miyabilink/sukkiri-sql3-codes/releases/download/v3.7.0/sukkiri-sql3-codes.zip
 FILE=$(shell basename $(URL))
 DEST=/usr/local/share/ssql
 BIN=/usr/local/bin
@@ -31,4 +32,4 @@ install: download
 
 uninstall:
 	rm -fr $(DEST)
-	cd $(BIN) && for i in can q qa qb qc; do rm -f $$i; done; rm -f list 
+	cd $(BIN) && for i in can q qa qb qc; do rm -f $$i; done; rm -f list
