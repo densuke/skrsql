@@ -12,8 +12,9 @@ setup: check download
 TESTDB=testdb-$$$$
 
 check:
-	@/bin/echo -n "check PATH..." ; which psql >&/dev/null || echo "[FATAL] PostgreSQL not found in PATH, please set and retry."
-	@echo ""
+	@/bin/echo -n "check PATH..." #
+	@sh -c "type psql"
+	@echo "OK"
 	@if createdb $(TESTDB) </dev/null; then dropdb $(TESTDB); else echo "[FATAL] Unable to create DB without password, please check and retry."; fi
 
 download: $(FILE)
