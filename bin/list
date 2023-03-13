@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DATA=/usr/local/share/ssql/code-ssql2
+DATA=/usr/local/share/ssql
 DB=Can
 
 usage() {
