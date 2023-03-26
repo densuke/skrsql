@@ -1,5 +1,5 @@
 #!/bin/bash
-IMAGE=densukest/skrsql:v3
+IMAGE=docker.io/densukest/skrsql:v3
 SVNAME=skrsql
 USER=sql
 
@@ -34,9 +34,9 @@ stop)
     ;;
 list|can|q|drill)
     if ! check_running; then
-       $0 start
-       echo "wait 3 seconds."
-       sleep 3
+        $0 start
+        echo "wait 3 seconds."
+        sleep 3
     fi
     echo "send command $1"...
     podman exec -it -u ${USER} ${SVNAME} "$@"
