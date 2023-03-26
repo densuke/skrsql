@@ -94,8 +94,7 @@ Dockerイメージの動作は以下の環境で確認しております。
     - ごめんなさい、Intel版のみです
 
 M1/M2 macOS上でのDocker Desktopによる検証はできておりませんが、仕組み上Linux/arm64なRaspbery Piで動くでしょうから問題無いと思ってます。
-
-どなたかM2 macBookをお恵みいただければ検証いたしますが、今はなんともです。
+どなたかM2 macBook(Memory 16GB- & US keyboard)をお恵みいただければ検証いたしますが、今はなんともです。
 
 `tools/skr` コマンドによりコンテナの制御や各コマンドの呼び出しが可能ですが、諸事情により`docker`コマンドではなく[podman](https://podman.io/)を使っております。
 
