@@ -29,6 +29,10 @@ status)
     exit ${RC}
     ;;
 stop)
+    if ! check_running; then
+        echo "server stopped already."
+        exit 0
+    fi
     echo "stopping server..."
     podman stop $SVNAME
     ;;
