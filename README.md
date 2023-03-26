@@ -77,7 +77,7 @@ PostgreSQLに関しては、利用者が以下の条件を満たしているこ�
 
 # Dockerイメージ版
 
-- [densukest/skrsql](https://hub.docker.com/repository/docker/densukest/skrsql/general)
+- [densukest/skrsql](https://hub.docker.com/r/densukest/skrsql)
 
 ```
 $ docker run -d --name skrsql densukest/skrsql:v3
