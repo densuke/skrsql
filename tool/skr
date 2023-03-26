@@ -1,0 +1,55 @@
+#!/bin/bash
+IMAGE=densukest/skrsql:v3
+SVNAME=skrsql
+USER=sql
+
+check_running() {
+    test $(podman container ps -a -f "status=running,name=$SVNAME" | wc -l) -gt 1
+    return $?
+}
+
+case "$1" in
+start)
+    echo "staring server..."
+    if check_running; then
+        echo "already running"
+    else
+        podman run --name $SVNAME --rm -d "$IMAGE"
+    fi
+    ;;
+status)
+    check_running
+    RC=$?
+    if [ $RC = 0 ]; then
+        R="running"
+    else
+        R="not running"
+    fi
+    echo "SVNAME server is ${R}"
+    exit ${RC}
+    ;;
+stop)
+    echo "stopping server..."
+    podman stop $SVNAME
+    ;;
+list|can|q|drill)
+    if ! check_running; then
+       $0 start
+       echo "wait 3 seconds."
+       sleep 3
+    fi
+    echo "send command $1"...
+    podman exec -it -u ${USER} ${SVNAME} "$@"
+    ;;
+*)
+    cat <<EOM
+usage: sql COMMAND ARGS...
+
+commands:
+- start: start DB server
+- stop: stop DB server
+- status: check whether DB server is running
+- list/can/q/drill ARGS...: run tool in server
+EOM
+    ;;
+esac
