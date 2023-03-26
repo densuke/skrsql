@@ -17,5 +17,5 @@ jobs:
             password: ${{ secrets.DOCKER_AUTH }}
         - name: build and push image
           run: |
-            docker builx create --name mybuilder --use
+            docker buildx create --name mybuilder --use
             docker buildx build --push -platform=linux/arm64,linux/amd64 -t densukest/skrsql:v3 env
