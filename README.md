@@ -79,6 +79,8 @@ PostgreSQLに関しては、利用者が以下の条件を満たしているこ�
 
 - [densukest/skrsql](https://hub.docker.com/r/densukest/skrsql)
 
+[![.github/workflows/ci.yml](https://github.com/densuke/skrsql/actions/workflows/ci.yml/badge.svg)](https://github.com/densuke/skrsql/actions/workflows/ci.yml)
+
 ```
 $ docker run -d --name skrsql densukest/skrsql:v3
 $ docker exec -it -u sql skrsql コマンド 引数...
