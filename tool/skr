@@ -14,6 +14,8 @@ start)
     if check_running; then
         echo "already running"
     else
+        # 稼働中の場合は除外しているので、非稼働コンテナでのチェックのみでOK
+        test $(podman container ps -a -f "name=$SVNAME" | wc -l) -gt 1 && podman container rm $SVNAME
         podman run --name $SVNAME --rm -d "$IMAGE"
     fi
     ;;
