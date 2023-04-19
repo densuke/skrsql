@@ -1,5 +1,5 @@
 #!/bin/bash
-IMAGE=densukest/skrsql:v3
+IMAGE=docker.io/densukest/skrsql:v3
 SVNAME=skrsql
 USER=sql
 
@@ -14,6 +14,8 @@ start)
     if check_running; then
         echo "already running"
     else
+        # 稼働中の場合は除外しているので、非稼働コンテナでのチェックのみでOK
+        test $(podman container ps -a -f "name=$SVNAME" | wc -l) -gt 1 && podman container rm $SVNAME
         podman run --name $SVNAME --rm -d "$IMAGE"
     fi
     ;;
@@ -29,14 +31,18 @@ status)
     exit ${RC}
     ;;
 stop)
+    if ! check_running; then
+        echo "server stopped already."
+        exit 0
+    fi
     echo "stopping server..."
     podman stop $SVNAME
     ;;
 list|can|q|drill)
     if ! check_running; then
-       $0 start
-       echo "wait 3 seconds."
-       sleep 3
+        $0 start
+        echo "wait 3 seconds."
+        sleep 3
     fi
     echo "send command $1"...
     podman exec -it -u ${USER} ${SVNAME} "$@"
