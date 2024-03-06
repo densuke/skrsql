@@ -1,5 +1,5 @@
 # v3.7.0
-URL=https://github.com/miyabilink/sukkiri-sql3-codes/releases/download/v3.7.0/sukkiri-sql3-codes.zip
+URL=https://github.com/miyabilink/sukkiri-sql4-codes/releases/latest/download/sukkiri-sql4-codes.zip
 FILE=$(shell basename $(URL))
 DEST=/usr/local/share/ssql
 BIN=/usr/local/bin
