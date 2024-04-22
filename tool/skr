@@ -1,5 +1,5 @@
 #!/bin/bash
-IMAGE=docker.io/densukest/skrsql:v3
+IMAGE=docker.io/densukest/skrsql:v4.0.1
 SVNAME=skrsql
 USER=sql
 

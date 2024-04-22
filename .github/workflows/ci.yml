@@ -18,4 +18,4 @@ jobs:
         - name: build and push image
           run: |
             docker buildx create --name mybuilder --use
-            docker buildx build --push --platform=linux/arm64,linux/amd64 -t densukest/skrsql:v4 env
+            docker buildx build --push --platform=linux/arm64,linux/amd64 -t densukest/skrsql:v4.0.1 env

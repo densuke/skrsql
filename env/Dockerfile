@@ -15,7 +15,7 @@ RUN apk add --no-cache tzdata git make curl sudo
 RUN cp -v /usr/share/zoneinfo/${TZ} /etc/localtime
 WORKDIR /tmp
 RUN git clone https://github.com/densuke/skrsql.git; \
-    cd skrsql; git switch v4; make download install; \
+    cd skrsql; git switch v4.0.1; make download install; \
     cd ..; rm -fr skrsql
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
     CMD [ "sudo", "-Hu", "sql", "pg_isready" ]
